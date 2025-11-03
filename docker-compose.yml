@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cobitcoin-webapp:
+    build: .
+    container_name: cobitcoin_webapp
+    ports:
+      - "8000:8000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}   # Token bot depuis .env
+      - WEBAPP_URL=${WEBAPP_URL}                   # URL de la web app
+      - TWELVEDATA_API_KEY=${TWELVEDATA_API_KEY}   # Optionnel si API Twelve Data
+    restart: unless-stopped
